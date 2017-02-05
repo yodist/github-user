@@ -9,17 +9,27 @@
   </head>
   <body ng-controller="githubData">
 
-    <h3>Github User</h3>
+    <h2>Github User</h2>
+    <form>
       Username: <input type="text" ng-model="username"><br>
       <button ng-click="find()">Show</button>
+    </form>
     <br>
 
     <div ng-show="display()">
       <h2>{{ userData.name }}</h2>
       <img id="avatar" ng-src="{{ userData.avatar_url }}" alt="avatar">
-      <p>company: {{ userData.company }}</p>
-      <p>email: {{ userData.email }}</p>
-      <p></p>
+      <p ng-hide="userData.bio == null">{{ userData.bio }}</p>
+      <p>Username: {{ userData.login }}</p>
+      <p ng-hide="userData.company == null">Company: {{ userData.company }}</p>
+      <p ng-hide="userData.email == null">E-mail: {{ userData.email }}</p>
+      <p ng-hide="userData.location == null">Location: {{ userData.location }}</p>
+      <p ng-hide="userData.blog == null">Blog: <a ng-href="{{userData.blog}}" target="_blank">{{ userData.blog }}</a></p>
+      <p ng-hide="userData.followers == null">Followers: {{ userData.followers }}</p>
+      <p ng-hide="userData.following == null">Following: {{ userData.following }}</p>
+      <p ng-hide="userData.public_repost == null">Public Repository: {{ userData.public_repos }}</p>
+      <p ng-hide="userData.created_at == null">Join Date: {{ userData.created_at | date:'medium'}}</p>
+      <p ng-hide="userData.updated_at == null">Last Activity: {{ userData.updated_at | date:'medium'}}</p>
     </div>
 
   </body>
