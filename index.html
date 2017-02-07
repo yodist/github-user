@@ -3,34 +3,60 @@
   <head>
     <meta charset="utf-8">
     <title>Github User App</title>
+    <!-- Angularjs -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <!-- jQuery -->
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="script.js" charset="utf-8"></script>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body ng-controller="githubData">
+  <body ng-controller="githubData" class="container">
 
-    <h2>Github User</h2>
-    <form>
-      Username: <input type="text" ng-model="username"><br>
-      <button ng-click="find()">Show</button>
-    </form>
-    <br>
+    <!-- form for find user -->
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <h2>Github User</h2>
+        <form>
+          Username: <input type="text" ng-model="username"><br>
+          <button ng-click="find()">Show</button>
+        </form>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div ng-show="display()">
+          <h2>{{ userData.name }}</h2>
+          <img id="avatar" ng-src="{{ userData.avatar_url }}" alt="avatar">
+          <p ng-hide="userData.bio == null">{{ userData.bio }}</p>
+          <p>Username: {{ userData.login }}</p>
+          <p ng-hide="userData.company == null">Company: {{ userData.company }}</p>
+          <p ng-hide="userData.email == null">E-mail: {{ userData.email }}</p>
+          <p ng-hide="userData.location == null">Location: {{ userData.location }}</p>
+          <p ng-hide="userData.blog == null">Blog: <a ng-href="{{userData.blog}}" target="_blank">{{ userData.blog }}</a></p>
+          <p ng-hide="userData.followers == null">Followers: {{ userData.followers }}</p>
+          <p ng-hide="userData.following == null">Following: {{ userData.following }}</p>
+          <p ng-hide="userData.public_repost == null">Public Repository: {{ userData.public_repos }}</p>
+          <p ng-hide="userData.created_at == null">Join Date: {{ userData.created_at | date:'medium'}}</p>
+          <p ng-hide="userData.updated_at == null">Last Activity: {{ userData.updated_at | date:'medium'}}</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
 
-    <div ng-show="display()">
-      <h2>{{ userData.name }}</h2>
-      <img id="avatar" ng-src="{{ userData.avatar_url }}" alt="avatar">
-      <p ng-hide="userData.bio == null">{{ userData.bio }}</p>
-      <p>Username: {{ userData.login }}</p>
-      <p ng-hide="userData.company == null">Company: {{ userData.company }}</p>
-      <p ng-hide="userData.email == null">E-mail: {{ userData.email }}</p>
-      <p ng-hide="userData.location == null">Location: {{ userData.location }}</p>
-      <p ng-hide="userData.blog == null">Blog: <a ng-href="{{userData.blog}}" target="_blank">{{ userData.blog }}</a></p>
-      <p ng-hide="userData.followers == null">Followers: {{ userData.followers }}</p>
-      <p ng-hide="userData.following == null">Following: {{ userData.following }}</p>
-      <p ng-hide="userData.public_repost == null">Public Repository: {{ userData.public_repos }}</p>
-      <p ng-hide="userData.created_at == null">Join Date: {{ userData.created_at | date:'medium'}}</p>
-      <p ng-hide="userData.updated_at == null">Last Activity: {{ userData.updated_at | date:'medium'}}</p>
+      </div>
     </div>
+
+
 
   </body>
 </html>
