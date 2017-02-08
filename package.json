@@ -1,0 +1,30 @@
+{
+  "name": "github-user-indexer",
+  "version": "1.0.0",
+  "description": "angular app for showing detailed github user information",
+  "main": "script.js",
+  "dependencies": {
+    "octicons": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yodist/github-user.git"
+  },
+  "keywords": [
+    "github",
+    "user",
+    "github",
+    "api"
+  ],
+  "author": "Yodi Satriani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yodist/github-user/issues"
+  },
+  "homepage": "https://github.com/yodist/github-user#readme"
+}
